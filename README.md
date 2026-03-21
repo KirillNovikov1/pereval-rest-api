@@ -164,6 +164,17 @@ http://127.0.0.1:5000/apidocs/
 GET /health
 ```
 
+## Deploy
+
+Production URL:
+https://pereval-rest-api-yr5a.onrender.com/
+
+Healthcheck:
+https://pereval-rest-api-yr5a.onrender.com/health
+
+Swagger:
+https://pereval-rest-api-yr5a.onrender.com/apidocs/
+
 ## REST API
 
 ### 1. POST `/submitData`
