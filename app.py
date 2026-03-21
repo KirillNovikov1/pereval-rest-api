@@ -5,6 +5,7 @@ from typing import Any
 
 from flask import Flask, jsonify, request
 from flasgger import Swagger
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from database import Database
 
@@ -21,7 +22,7 @@ SWAGGER_TEMPLATE = {
         "version": "1.0.0",
     },
     "basePath": "/",
-    "schemes": ["http", "https"],
+    "schemes": ["https"],
 }
 
 
@@ -64,6 +65,7 @@ def validate_input(data: dict[str, Any]) -> tuple[bool, str]:
 
 def create_app(database_instance: Database | None = None) -> Flask:
     app = Flask(__name__)
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
     app.url_map.strict_slashes = False
     Swagger(app, template=SWAGGER_TEMPLATE)
 
