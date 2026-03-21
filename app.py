@@ -86,6 +86,16 @@ def create_app(database_instance: Database | None = None) -> Flask:
                   example: ok
         """
         return jsonify({"status": "ok"}), 200
+    
+    @app.get("/")
+    def index():
+      return jsonify(
+        {
+            "message": "Pereval REST API is running",
+            "health": "/health",
+            "docs": "/apidocs/",
+        }
+    ), 200
 
     @app.post("/submitData")
     def submit_data():
