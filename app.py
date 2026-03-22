@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flasgger import Swagger
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -98,6 +98,10 @@ def create_app(database_instance: Database | None = None) -> Flask:
             "docs": "/apidocs/",
         }
     ), 200
+
+    @app.get("/ui")
+    def ui():
+      return render_template("index.html")
 
     @app.post("/submitData")
     def submit_data():
