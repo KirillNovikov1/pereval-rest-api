@@ -169,6 +169,9 @@ GET /health
 Production URL:
 https://pereval-rest-api-yr5a.onrender.com/
 
+UI URL:
+https://pereval-rest-api-yr5a.onrender.com/ui
+
 Healthcheck:
 https://pereval-rest-api-yr5a.onrender.com/health
 
