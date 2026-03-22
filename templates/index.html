@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pereval REST API UI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <h1>Pereval REST API</h1>
+        <p>Небольшой интерфейс для проверки и демонстрации API.</p>
+      </div>
+      <div class="hero-links">
+        <a href="/" target="_blank">Главная</a>
+        <a href="/apidocs/" target="_blank">Swagger</a>
+        <a href="/health" target="_blank">Health</a>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Проверка сервиса</h2>
+        <p>Быстрый запрос к <code>/health</code>.</p>
+        <button id="healthBtn">Проверить health</button>
+      </section>
+
+      <section class="card">
+        <h2>Получить перевал по ID</h2>
+        <label for="perevalId">ID перевала</label>
+        <input id="perevalId" type="number" placeholder="Например: 1" />
+        <button id="getByIdBtn">Получить по ID</button>
+      </section>
+
+      <section class="card">
+        <h2>Получить перевалы по email</h2>
+        <label for="userEmail">Email пользователя</label>
+        <input id="userEmail" type="email" placeholder="Например: user@example.com" />
+        <button id="getByEmailBtn">Получить по email</button>
+      </section>
+
+      <section class="card wide">
+        <h2>Добавить новый перевал</h2>
+        <p>Отредактируй JSON и отправь в <code>POST /submitData</code>.</p>
+        <textarea id="postPayload"></textarea>
+        <button id="postBtn">Отправить POST</button>
+      </section>
+
+      <section class="card wide">
+        <h2>Обновить перевал</h2>
+        <label for="patchId">ID перевала</label>
+        <input id="patchId" type="number" placeholder="Например: 1" />
+        <p>Тело для <code>PATCH /submitData/&lt;id&gt;</code>.</p>
+        <textarea id="patchPayload"></textarea>
+        <button id="patchBtn">Отправить PATCH</button>
+      </section>
+
+      <section class="card wide">
+        <h2>Ответ сервера</h2>
+        <div class="status-row">
+          <span id="statusBadge" class="badge">Ожидание</span>
+        </div>
+        <pre id="output">Здесь появится ответ сервера...</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
